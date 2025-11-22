@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	:root {
+		/* very light mild pink for page background (matches primary pink accent) */
+		--background: 326 85% 98%;
+		--foreground: 0 0% 13%;
+		--card: 0 0% 100%;
+		--primary: 326 85% 50%;
+		--primary-foreground: 0 0% 100%;
+		--accent: 45 100% 55%;
+		--accent-foreground: 0 0% 13%;
+		--muted: 0 0% 96%;
+		--muted-foreground: 0 0% 45%;
+		--border: 0 0% 90%;
+	}
+	html, body, #root {
+		height: 100%;
+	}
+	html {
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		text-rendering: optimizeLegibility;
+	}
+	body {
+		background-color: #FFF5FB; /* subtle pink page background */
+		color: #222222;
+		font-family: "Inter", "Open Sans", system-ui, sans-serif;
+		letter-spacing: -0.01em;
+	}
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		color: #222222;
+		font-family: "Montserrat", system-ui, sans-serif;
+		letter-spacing: -0.02em;
+		font-feature-settings: "liga", "kern";
+	}
+	p {
+		/* Relaxed line-height for readability; justify and disable hyphenation */
+		line-height: 1.75;
+		text-align: justify;
+		hyphens: none;
+		/* slight word-spacing to reduce large gaps when justified */
+		word-spacing: 0.02em;
+	}
+}
+
+/* Exceptions: keep footer & explicitly-marked contact/address blocks left-aligned and with normal hyphenation */
+@layer base {
+    footer p,
+    .no-justify p {
+        text-align: left;
+        hyphens: auto;
+        word-spacing: normal;
+        /* return to the previously set line-height if desired */
+        line-height: 1.2;
+    }
+}
+
+@layer utilities {
+	.section-padding { @apply py-16 md:py-24; }
+	.container-custom { @apply container; }
+	.hover-lift { @apply transition-all duration-300 ease-soft -translate-y-0 hover:-translate-y-1 hover:shadow-large; }
+	.animate-fade-in-up { @apply animate-fade-in-up; }
+	.btn-primary { @apply bg-primary text-white px-6 py-3 rounded-lg font-medium shadow-soft hover:bg-primary/90 hover:shadow-medium transition-all duration-300 ease-soft; }
+	.btn-secondary { @apply border-2 border-primary text-primary px-6 py-3 rounded-lg font-medium hover:bg-primary/5 transition-all duration-300 ease-soft; }
+}
