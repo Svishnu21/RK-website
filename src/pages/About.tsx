@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import SEO from '../components/seo/SEO'
 import NoSSRMotion from '../components/ui/NoSSRMotion'
 import { Building2, Warehouse, Package } from 'lucide-react'

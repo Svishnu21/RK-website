@@ -1,0 +1,17 @@
+# Runtime
+Node.js >= 18.0.0
+npm >= 10.0.0
+
+# Environment Variables (in .env.local)
+EMAIL_USER=<gmail_address>
+EMAIL_PASS=<gmail_app_password>
+EMAIL_TO=<optional_forward_address>
+PORT=3001
+VITE_API_URL=http://localhost:3001
+
+# Install Project Dependencies
+npm install
+
+# Start development servers
+npm run start-server
+npm run dev
