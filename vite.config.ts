@@ -5,7 +5,7 @@ import dotenv from 'dotenv'
 // Load local env vars for dev-time config (do not commit .env.local)
 dotenv.config({ path: '.env.local' })
 
-const serverPort = process.env.PORT || '3001'
+const serverPort = process.env.PORT || '3000'
 
 // https://vite.dev/config/
 export default defineConfig({

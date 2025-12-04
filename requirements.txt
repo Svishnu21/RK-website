@@ -6,8 +6,8 @@ npm >= 10.0.0
 EMAIL_USER=<gmail_address>
 EMAIL_PASS=<gmail_app_password>
 EMAIL_TO=<optional_forward_address>
-PORT=3001
-VITE_API_URL=http://localhost:3001
+PORT=3000
+VITE_API_URL=http://localhost:3000
 
 # Install Project Dependencies
 npm install

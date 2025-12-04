@@ -13,17 +13,43 @@ import express from 'express'
 import dotenv from 'dotenv'
 import cors from 'cors'
 import nodemailer from 'nodemailer'
+import fs from 'fs'
+import path from 'path'
+import { fileURLToPath } from 'url'
 
 // Load environment variables. Prefer `.env.local` if present, then fall back to default .env
 dotenv.config({ path: '.env.local' })
 dotenv.config()
 
 const app = express()
-const PORT = process.env.PORT || 3001
+const PORT = process.env.PORT || 3000
 
 app.use(express.json())
 // Allow requests from Vite dev server; set VITE_API_URL if different origin
 app.use(cors())
+
+// Serve production build if available (single-command deployment: build -> start)
+try {
+  const __filename = fileURLToPath(import.meta.url)
+  const __dirname = path.dirname(__filename)
+  const distPath = path.join(__dirname, 'dist')
+
+  if (fs.existsSync(distPath)) {
+    app.use(express.static(distPath))
+
+    // SPA fallback: return index.html for any other route
+    app.get('*', (req, res, next) => {
+      const indexHtml = path.join(distPath, 'index.html')
+      if (fs.existsSync(indexHtml)) {
+        return res.sendFile(indexHtml)
+      }
+      return next()
+    })
+  }
+} catch (err) {
+  // If something goes wrong with static serving, continue to API routes
+  console.error('Error setting up static file serving:', err)
+}
 
 // Basic health check
 app.get('/api/health', (_req, res) => {
