@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import SEO from '../components/seo/SEO'
 import NoSSRMotion from '../components/ui/NoSSRMotion'
 import MapEmbed from '../components/layout/MapEmbed'
-import { MapPin, Phone, Mail, Globe } from 'lucide-react'
+import { MapPin, Phone, Mail } from 'lucide-react'
 
 export default function Contact() {
 	const [form, setForm] = useState({ name: '', email: '', phone: '', company: '', message: '' })

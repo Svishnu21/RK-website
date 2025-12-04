@@ -1,12 +1,3 @@
-import imgStationery from '../assets/products/School & office Stationery.jpg'
-import imgDelivery from '../assets/products/delivery.jpg'
-import imgNotebooks from '../assets/products/Notebook Manufacturing.jpg'
-import imgPaper from '../assets/products/Paper & Paper Products.jpg'
-import imgFiles from '../assets/products/Files & Folders.jpg'
-import imgChalk from '../assets/products/chalk production.jpg'
-import imgSports from '../assets/products/sports and goods.jpg'
-import imgSpiral from '../assets/products/spiral binding.jpg'
-
 // Blog hero images (updated)
 import blog1 from '../assets/blog/blog1.JPG'
 import blog2 from '../assets/blog/blog2.JPG'
