@@ -140,3 +140,22 @@ app.listen(PORT, () => {
   console.log(`Contact email server listening on http://localhost:${PORT}`)
   console.log(`Email config: EMAIL_USER=${cfgUser}, EMAIL_PASS=${cfgPass}, EMAIL_TO=${cfgTo}`)
 })
+
+// Write PID file so the server can be stopped with an npm script
+try {
+  const __filename = fileURLToPath(import.meta.url)
+  const __dirname = path.dirname(__filename)
+  const pidFile = path.join(__dirname, 'server.pid')
+  fs.writeFileSync(pidFile, String(process.pid), { encoding: 'utf8' })
+
+  const cleanup = () => {
+    try { if (fs.existsSync(pidFile)) fs.unlinkSync(pidFile) } catch (e) { /* ignore */ }
+  }
+
+  process.on('exit', cleanup)
+  process.on('SIGINT', () => { cleanup(); process.exit(0) })
+  process.on('SIGTERM', () => { cleanup(); process.exit(0) })
+  process.on('uncaughtException', (err) => { console.error(err); cleanup(); process.exit(1) })
+} catch (err) {
+  console.error('Failed to write PID file:', err)
+}
